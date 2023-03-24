@@ -9,4 +9,5 @@ module yaeger.showcase {
     opens backgrounds;
     opens entities;
     opens fonts;
+    exports nl.han.showcase.Birdblitz;
 }
