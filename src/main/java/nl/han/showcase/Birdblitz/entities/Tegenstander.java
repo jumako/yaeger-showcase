@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.api.entities.text.ScoreText;
+import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 public abstract class Tegenstander extends DynamicSpriteEntity implements Collided,Collider, SceneBorderCrossingWatcher, UpdateExposer{
 	
