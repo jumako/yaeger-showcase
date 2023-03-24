@@ -21,7 +21,7 @@ import java.util.Set;
 public class Speler extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided, UpdateExposer{
 	
 	private LevensText levensText;
-	private int levens = 10;
+	private int levens = 150;
 	private ScoreText scoreText;
 	private int score = 0;
 	private KogelSpawner kogelSpawner;

@@ -4,7 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.scenes.SceneBorder;
-import com.github.hanyaeger.birdblitz.entities.text.ScoreText;
+import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 public class Boss extends Tegenstander{
 	
