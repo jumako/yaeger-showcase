@@ -6,27 +6,22 @@ import java.util.Random;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.birdblitz.KogelSpawner;
-import com.github.hanyaeger.birdblitz.birdblitz;
-import com.github.hanyaeger.birdblitz.entities.speedy;
-import com.github.hanyaeger.birdblitz.entities.boss;
-import com.github.hanyaeger.birdblitz.entities.grunt;
-import com.github.hanyaeger.birdblitz.entities.Speler;
-import com.github.hanyaeger.birdblitz.entities.heavy;
-import com.github.hanyaeger.birdblitz.entities.Tegenstander;
-import com.github.hanyaeger.birdblitz.entities.text.LevensText;
-import com.github.hanyaeger.birdblitz.entities.text.ScoreText;
+import nl.han.showcase.Birdblitz.Birdblitz;
+import nl.han.showcase.Birdblitz.KogelSpawner;
+import nl.han.showcase.Birdblitz.entities.*;
+import nl.han.showcase.Birdblitz.entities.text.LevensText;
+import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 
 public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
 
     //private Speler speler;
     private KogelSpawner kogelSpawner;
-    private birdblitz birdblitz;
+    private Birdblitz birdblitz;
     public int huidigeTegenstanders;
     public int ronde;
 
-    public Spelscherm(birdblitz birdblitz) {
+    public Spelscherm(Birdblitz birdblitz ) {
         this.birdblitz = birdblitz;
     }
 
@@ -64,7 +59,7 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
             birdblitz.setActiveScene(2);
         }
         if(ronde == 5) {
-            boss boss = new boss(new Coordinate2D(getWidth()/2, getHeight() / 12), speler, scoreText);
+            Boss boss = new Boss(new Coordinate2D(getWidth()/2, getHeight() / 12), speler, scoreText);
             addEntity(boss);
         }
         else {
@@ -77,13 +72,13 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
                 int n = r.nextInt(3) + 1;
 
                 if(n == 1) {
-                    tegenstanders.add(new grunt(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
+                    tegenstanders.add(new Grunt(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
                 }
                 if(n == 2) {
-                    tegenstanders.add(new speedy(new Coordinate2D(getWidth()/4 + ruimte, getHeight() / 12), speler, scoreText));
+                    tegenstanders.add(new Speedy(new Coordinate2D(getWidth()/4 + ruimte, getHeight() / 12), speler, scoreText));
                 }
                 if(n == 3) {
-                    tegenstanders.add(new heavy(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
+                    tegenstanders.add(new Heavy(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
                 }
             }
             for(Tegenstander t : tegenstanders) {
@@ -93,3 +88,14 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
             System.out.println("Gemaakte tegenstanders: " + huidigeTegenstanders);
         }
     }
+    public void setHuidigeTegenstanders(int huidig) {
+        huidigeTegenstanders = huidig;
+    }
+
+    public int getHuidigeTegenstanders() {
+        return huidigeTegenstanders;
+    }
+
+
+
+}

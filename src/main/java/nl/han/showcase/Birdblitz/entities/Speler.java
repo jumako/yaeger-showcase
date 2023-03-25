@@ -10,11 +10,11 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.birdblitz.KogelSpawner;
-import com.github.hanyaeger.birdblitz.entities.text.LevensText;
-import com.github.hanyaeger.birdblitz.entities.text.ScoreText;
-import com.github.hanyaeger.birdblitz.scenes.Spelscherm;
 import javafx.scene.input.KeyCode;
+import nl.han.showcase.Birdblitz.KogelSpawner;
+import nl.han.showcase.Birdblitz.entities.text.LevensText;
+import nl.han.showcase.Birdblitz.entities.text.ScoreText;
+import nl.han.showcase.Birdblitz.scenes.Spelscherm;
 
 import java.util.Set;
 
