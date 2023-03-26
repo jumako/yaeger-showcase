@@ -28,7 +28,7 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     @Override
     public void setupScene() {
         // TODO Auto-generated method stub
-        setBackgroundImage("backgrounds/space.jpg");
+        setBackgroundImage("backgrounds/hanboven.png");
         kogelSpawner = new KogelSpawner(100);
     }
 
