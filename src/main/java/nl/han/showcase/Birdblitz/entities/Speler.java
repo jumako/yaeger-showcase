@@ -18,7 +18,7 @@ import nl.han.showcase.Birdblitz.scenes.Spelscherm;
 
 import java.util.Set;
 
-public class Speler extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided, UpdateExposer{
+public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBorderTouchingWatcher, Collided, UpdateExposer{
 	
 	private LevensText levensText;
 	private int levens = 10;
@@ -88,6 +88,8 @@ public class Speler extends DynamicSpriteEntity implements KeyListener, SceneBor
         }
 	}
 
+
+
 	@Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if(pressedKeys.contains(KeyCode.LEFT)){
@@ -118,11 +120,12 @@ public class Speler extends DynamicSpriteEntity implements KeyListener, SceneBor
 
         return spelerLocatie;
     }
-	
+
 	@Override
     public void explicitUpdate(final long timestamp) {
 		kogelSpawner.setLocatie(getLocationInScene());
     }
+
 	public int getScore() {
 		return score;
 	}

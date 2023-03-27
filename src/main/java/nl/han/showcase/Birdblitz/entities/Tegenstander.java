@@ -22,20 +22,6 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
 		this.speler = speler;
 		this.scoreText = scoreText;
 	}
-	
-	/*
-	public abstract void Beweeg();
-	public abstract void Verwijder();
-	public abstract void notifyBoundaryCrossing();
-	*/
-	
-	
-	//abstract void Beweeg(int snelheid);
-	//Niet snelheid meegeven maar snelheden statische waardes maken voor elke tegenstander
-	//Net als schade
-
-
-	//abstract void Verwijder();
 
 	public void notifyBoundaryCrossing(SceneBorder border) {
 		switch(border) {

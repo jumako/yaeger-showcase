@@ -6,7 +6,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 
-public class Speedy extends Tegenstander{
+public class Speedy  extends Tegenstander{
 	
 	public static int grootte = 35;
 	public static int snelheid = 3;
