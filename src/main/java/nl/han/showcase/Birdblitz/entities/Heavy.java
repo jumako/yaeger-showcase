@@ -3,7 +3,10 @@ package nl.han.showcase.Birdblitz.entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
+import javafx.scene.input.KeyCode;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
+
+import java.util.Set;
 
 
 public class Heavy extends Tegenstander{
@@ -36,7 +39,12 @@ public class Heavy extends Tegenstander{
 	public void Beweeg() {
 		setMotion(snelheid,360);
 	}
-	
+
+	@Override
+	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+
+	}
+
 	public void setLevens() {
 		
 	}

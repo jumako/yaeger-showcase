@@ -8,7 +8,12 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import javafx.scene.input.KeyCode;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
+
+import java.util.Set;
+
+//import static nl.han.showcase.Birdblitz.entities.Scherpschutten2..levens;
 
 public abstract class Tegenstander extends DynamicSpriteEntity implements Collided,Collider, SceneBorderCrossingWatcher, UpdateExposer{
 
@@ -40,19 +45,6 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
 		}
 	}
 
-	@Override
-	public void onCollision(Collider collidingObject) {
-		if (collidingObject instanceof Kogel) {
-			ontvangSchade(Scherpschutter.schade);
-			if (levens <= 0) {
-				remove();
-				speler.setScore(speler.getScore() + score);
-				scoreText.setScoreText(speler.getScore());
-				speler.checkAantalTegenstanders();
-			}
-		}
-	}
-
 	protected static void ontvangSchade(int schade) {
 	}
 
@@ -63,4 +55,6 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
 	public abstract void Beweeg();{
 
 	}
+
+	public abstract void onPressedKeysChange(Set<KeyCode> pressedKeys);
 }

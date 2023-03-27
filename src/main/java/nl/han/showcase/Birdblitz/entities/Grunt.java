@@ -3,7 +3,10 @@ package nl.han.showcase.Birdblitz.entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
+import javafx.scene.input.KeyCode;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
+
+import java.util.Set;
 
 
 public class Grunt extends Tegenstander{
@@ -40,7 +43,10 @@ public class Grunt extends Tegenstander{
 		setMotion(snelheid,300);
 	}
 
+	@Override
+	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
 
+	}
 
 
 }

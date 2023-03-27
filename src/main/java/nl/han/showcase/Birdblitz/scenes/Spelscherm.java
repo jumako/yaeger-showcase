@@ -6,6 +6,7 @@ import java.util.Random;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.scenes.TileMap;
 import nl.han.showcase.Birdblitz.Birdblitz;
 import nl.han.showcase.Birdblitz.KogelSpawner;
 import nl.han.showcase.Birdblitz.entities.*;
@@ -68,8 +69,9 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
             for(huidigeTegenstanders = 0; huidigeTegenstanders < max; huidigeTegenstanders++) {
                 int ruimte = huidigeTegenstanders * 70;
 
-                Random r = new Random();
-                int n = r.nextInt(4) + 1;
+                //Random r = new Random();
+                //int n = r.nextInt(4) + 1;
+                int n = 4;
 
                 if(n == 1) {
                     tegenstanders.add(new Grunt(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
@@ -81,7 +83,11 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
                     tegenstanders.add(new Heavy(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
                 }
                 if(n == 4) {
-                    tegenstanders.add(new Scherpschutter(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
+                    tegenstanders.add(new Scherpschutten2(new Coordinate2D(getWidth() / 4 + ruimte, getHeight() / 12), speler, scoreText,kogelSpawner) {
+
+
+
+                    });
                 }
             }
             for(Tegenstander t : tegenstanders) {
