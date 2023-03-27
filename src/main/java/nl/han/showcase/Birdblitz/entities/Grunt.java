@@ -17,7 +17,7 @@ public class Grunt extends Tegenstander{
 
 	public Grunt(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		
-		super("photos/grunt.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
+		super("entities/grunt.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
 		
 	}
 

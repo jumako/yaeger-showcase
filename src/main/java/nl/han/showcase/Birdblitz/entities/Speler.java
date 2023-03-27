@@ -29,7 +29,7 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	
 
 	public Speler(Coordinate2D locatie, LevensText levensText,ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm){
-		super("entities/player.png", locatie, new Size(50,50), 1, 1);
+		super("entities/player.png", locatie, new Size(100,100), 1, 1);
 		this.levensText = levensText;
 		levensText.setLevensText(levens);
 		this.scoreText = scoreText;
