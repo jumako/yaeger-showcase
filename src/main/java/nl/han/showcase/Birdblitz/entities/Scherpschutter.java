@@ -6,24 +6,35 @@ import com.github.hanyaeger.api.Timer;
 import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.scenes.SceneBorder;
+import com.github.hanyaeger.api.scenes.TileMap;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 import java.util.Random;
+import java.util.TimerTask;
 
-public abstract class Scherpschutter extends Tegenstander implements TimerContainer  {
-
+public abstract class Scherpschutter extends Tegenstander implements TimerContainer {
+    public static void ontvangSchade(int schade) {
+        levens -= schade;
+    }
     public static int grootte = 40;
     public static int snelheid = 1;
-    public int levens = 200;
+    public static int levens = 200;
     public static int score = 50;
     public static int schade = 100;
-    private Timer schietTimer;
+    private java.util.Timer schietTimer;
 
     public Scherpschutter(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
-        super("entities/sluipschutter.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
-        schietTimer = new Timer(() -> schietKogel(), 2000);
-        addTimer(schietTimer);
+        super("entities/sluipschutter.png", initialLocation, new Size(grootte, grootte), speler, scoreText);
+        schietTimer = new java.util.Timer();
+        schietTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                schietKogel();
+            }
+        }, 2000, 2000);
+
     }
+
 
     protected Scherpschutter(String resource, Coordinate2D initialLocation, Size grootte, Speler speler, ScoreText scoreText) {
         super(resource, initialLocation, grootte, speler, scoreText);
@@ -31,9 +42,9 @@ public abstract class Scherpschutter extends Tegenstander implements TimerContai
 
     @Override
     public void onCollision(Collider collidingObject) {
-        if(collidingObject instanceof Kogel) {
+        if (collidingObject instanceof Kogel) {
             levens--;
-            if(levens<0) {
+            if (levens < 0) {
                 remove();
                 speler.setScore(speler.getScore() + score);
                 scoreText.setScoreText(speler.getScore());
@@ -53,6 +64,8 @@ public abstract class Scherpschutter extends Tegenstander implements TimerContai
         getScene().addEntity(kogel);
     }
 
+    protected abstract TileMap getScene();
+
     public void setLevens() {
 
     }
@@ -60,5 +73,4 @@ public abstract class Scherpschutter extends Tegenstander implements TimerContai
     public int getLevens() {
         return this.levens;
     }
-
 }
