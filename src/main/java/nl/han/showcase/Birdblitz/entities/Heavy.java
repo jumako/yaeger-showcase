@@ -10,13 +10,13 @@ public class Heavy extends Tegenstander{
 	
 	public static int grootte = 50;
 	public static int snelheid = 1;
-	public int  levens = 5;
+	public int levens = 400;
 	public static int score = 50;
-	public static int schade = 3;
+	public static int schade = 100;
 	
 
 	public Heavy(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
-		super("sprites/Tank.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
+		super("entities/Vulture.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
 	}
 	
 	@Override

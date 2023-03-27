@@ -10,14 +10,14 @@ public class Grunt extends Tegenstander{
 	
 	public static int grootte = 50;
 	public static int snelheid = 1;
-	public int levens = 1;
+	public int levens = 100;
 	public static int score = 10;
-	public static int schade = 1;
+	public static int schade = 50;
 	
 
 	public Grunt(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		
-		super("sprites/grunt.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
+		super("photos/grunt.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
 		
 	}
 

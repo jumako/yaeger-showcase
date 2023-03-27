@@ -69,7 +69,7 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
                 int ruimte = huidigeTegenstanders * 70;
 
                 Random r = new Random();
-                int n = r.nextInt(3) + 1;
+                int n = r.nextInt(4) + 1;
 
                 if(n == 1) {
                     tegenstanders.add(new Grunt(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
@@ -79,6 +79,9 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
                 }
                 if(n == 3) {
                     tegenstanders.add(new Heavy(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
+                }
+                if(n == 4) {
+                    tegenstanders.add(new Scherpschutter(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
                 }
             }
             for(Tegenstander t : tegenstanders) {

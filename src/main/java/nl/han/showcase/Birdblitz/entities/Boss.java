@@ -14,7 +14,7 @@ public class Boss extends Tegenstander{
 	public static int snelheid = 1;
 	
 	public Boss(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
-		super("sprites/boss.png",initialLocation ,new Size(grootte,grootte),speler,scoreText);
+		super("entities/boss.png",initialLocation ,new Size(grootte,grootte),speler,scoreText);
 	}
 	
 	@Override

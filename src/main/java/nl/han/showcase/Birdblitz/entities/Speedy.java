@@ -11,11 +11,11 @@ public class Speedy extends Tegenstander{
 	public static int grootte = 35;
 	public static int snelheid = 3;
 	public static int score = 5;
-	public int levens = 1;
-	public static int schade = 1;
+	public int levens = 100;
+	public static int schade = 50;
 
 	public Speedy(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
-		super("nl.han.showcase/Birdblitz/entities/photos/Speedy.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
+		super("entities/Speedy.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
 	}
 
 	@Override

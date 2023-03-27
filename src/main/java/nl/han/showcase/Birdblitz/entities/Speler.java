@@ -20,16 +20,16 @@ import java.util.Set;
 
 public class Speler extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Collided, UpdateExposer{
 	
-	private LevensText levensText;
-	private int levens = 10;
-	private ScoreText scoreText;
+	private final LevensText levensText;
+	private int levens = 150;
+	private final ScoreText scoreText;
 	private int score = 0;
-	private KogelSpawner kogelSpawner;
+	private final KogelSpawner kogelSpawner;
 	private Spelscherm spelscherm;
 	
 
 	public Speler(Coordinate2D locatie, LevensText levensText,ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm){
-		super("sprites/tie.png", locatie, new Size(50,50), 1, 1);
+		super("entities/player.png", locatie, new Size(50,50), 1, 1);
 		this.levensText = levensText;
 		levensText.setLevensText(levens);
 		this.scoreText = scoreText;
@@ -68,7 +68,15 @@ public class Speler extends DynamicSpriteEntity implements KeyListener, SceneBor
 				checkAantalTegenstanders();
 				((Tegenstander) collidingObject).remove();
 			}
-			
+			if(collidingObject instanceof Scherpschutter) {
+				levens = levens - Scherpschutter.schade;
+				System.out.println(Scherpschutter.schade);
+				levensText.setLevensText(levens);
+				this.setScore(this.getScore() + Scherpschutter.score);
+				scoreText.setScoreText(this.getScore());
+				checkAantalTegenstanders();
+				((Tegenstander) collidingObject).remove();
+			}
 		}
 		
 	}
