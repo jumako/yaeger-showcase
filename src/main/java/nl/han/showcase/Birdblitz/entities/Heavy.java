@@ -31,7 +31,6 @@ public class Heavy extends Tegenstander {
 				remove();
 				speler.setScore(speler.getScore() + score);
 				scoreText.setScoreText(speler.getScore());
-				speler.checkAantalTegenstanders();
 			}
 		}
 	}
