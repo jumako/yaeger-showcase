@@ -17,20 +17,20 @@ public class Boss extends Tegenstander{
 	public Boss(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		super("entities/boss.png",initialLocation ,new Size(grootte,grootte),speler,scoreText);
 	}
-	
+
 	@Override
 	public void onCollision(Collider collidingObject) {
-		if(collidingObject instanceof Kogel) {
-			levens--;
-			if(levens<0) {
+		if (collidingObject instanceof Kogel) {
+			levens = levens - 100;
+			if (levens < 0) {
 				remove();
 				speler.setScore(speler.getScore() + score);
 				scoreText.setScoreText(speler.getScore());
 				speler.checkAantalTegenstanders();
 			}
 		}
-		}
-	
+	}
+
 	@Override
 	public void notifyBoundaryCrossing(SceneBorder border) {
 		switch(border) {
