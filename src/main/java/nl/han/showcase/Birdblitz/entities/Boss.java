@@ -10,7 +10,7 @@ import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 public class Boss extends Tegenstander{
 	
-	public static int grootte = 100;
+	public static int grootte = 300;
 	public int levens = 10;
 	public static int snelheid = 1;
 	

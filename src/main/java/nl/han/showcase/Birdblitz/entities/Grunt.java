@@ -11,8 +11,8 @@ import java.util.Set;
 
 public class Grunt extends Tegenstander{
 	
-	public static int grootte = 50;
-	public static int snelheid = 1;
+	public static int grootte = 70;
+	public static int snelheid = 5;
 	public int levens = 100;
 	public static int score = 10;
 	public static int schade = 50;

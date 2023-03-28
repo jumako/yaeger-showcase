@@ -23,18 +23,19 @@ public class Level {
         ArrayList<Tegenstander> tegenstanders = new ArrayList<>(); // Create new ArrayList
 
         if (aantaltegenstanders <=10) {
-            int n = RandomVogel(4);
+            int n = Random(3);
             aantaltegenstanders++;
-                if (n == 1 && aantalGrunt > 0) {
+                if (n == 0 && aantalGrunt > 0) {
                     tegenstanders.add(new Grunt(new Coordinate2D(width / 4, height / 12), speler, scoreText));
                     aantalGrunt--;
-                } else if (n == 2 && aantalSpeedy > 0) {
+                } else if (n == 1 && aantalSpeedy > 0) {
                     tegenstanders.add(new Speedy(new Coordinate2D(width / 4, height / 12), speler, scoreText));
                     aantalSpeedy--;
-                } else if (n == 3 && aantalHeavy > 0) {
+                } else if (n == 2 && aantalHeavy > 0) {
                     tegenstanders.add(new Heavy(new Coordinate2D(width / 4, height / 12), speler, scoreText));
                     aantalHeavy--;
-                } else if (n == 4 && aantalScherpschutter > 0) {
+                } else if (n == 3 && aantalScherpschutter > 0) {
+                    tegenstanders.add(new Sluipschutter(new Coordinate2D(width / 4, height / 12), speler, scoreText));
                     aantalScherpschutter--;
                 }
             }
@@ -46,9 +47,9 @@ public class Level {
 
 
 
-        private static int RandomVogel ( int maxgetal){
+        private static int Random ( int maxgetal){
             Random r = new Random();
-            int n = r.nextInt(maxgetal) + 1;
+            int n = r.nextInt(maxgetal) ;
             return n;
         }
     }

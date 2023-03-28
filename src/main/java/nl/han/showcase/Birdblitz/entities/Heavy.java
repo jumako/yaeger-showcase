@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Heavy extends Tegenstander {
 
-	public static int grootte = 50;
+	public static int grootte = 100;
 	public static int snelheid = 1;
 	public int levens = 400;
 	public static int score = 50;

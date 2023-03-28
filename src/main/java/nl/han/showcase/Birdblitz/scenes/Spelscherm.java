@@ -45,8 +45,8 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
 
         var speler = new Speler(new Coordinate2D(getWidth()/2, getHeight() / 8 * 7), levensText,scoreText,kogelSpawner,this);
         addEntity(speler);
+        setupTegenstanders(speler, scoreText);
 
-        setupTegenstanders(speler,scoreText);
     }
 
     @Override
@@ -56,10 +56,11 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     }
 
     public void setupTegenstanders(Speler speler, ScoreText scoreText) {
-        ArrayList<Tegenstander> tegenstanders = Level.createEnemies(2, 2, 2, 2, getWidth(), getHeight(), speler, scoreText);
-        for (Tegenstander t : tegenstanders) {
-            addEntity(t);
-        }
+            ArrayList<Tegenstander> tegenstanders = Level.createEnemies(4, 3, 1, 2, getWidth(), getHeight(), speler, scoreText);
+            for (Tegenstander t : tegenstanders) {
+                addEntity(t);
+            }
+
     }
 
 
