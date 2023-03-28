@@ -68,15 +68,15 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 				checkAantalTegenstanders();
 				((Tegenstander) collidingObject).remove();
 			}
-			if(collidingObject instanceof Scherpschutten2) {
-				levens = levens - Scherpschutten2.schade;
-				System.out.println(Scherpschutten2.schade);
-				levensText.setLevensText(levens);
-				this.setScore(this.getScore() + Scherpschutten2.score);
-				scoreText.setScoreText(this.getScore());
-				checkAantalTegenstanders();
-				((Tegenstander) collidingObject).remove();
-			}
+//			if(collidingObject instanceof Scherpschutten2) {
+//				levens = levens - Scherpschutten2.schade;
+//				System.out.println(Scherpschutten2.schade);
+//				levensText.setLevensText(levens);
+//				this.setScore(this.getScore() + Scherpschutten2.score);
+//				scoreText.setScoreText(this.getScore());
+//				checkAantalTegenstanders();
+//				((Tegenstander) collidingObject).remove();
+//			}
 		}
 		
 	}

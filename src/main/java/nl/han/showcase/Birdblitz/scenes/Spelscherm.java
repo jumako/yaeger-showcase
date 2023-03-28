@@ -1,17 +1,16 @@
 package nl.han.showcase.Birdblitz.scenes;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.api.scenes.TileMap;
 import nl.han.showcase.Birdblitz.Birdblitz;
 import nl.han.showcase.Birdblitz.KogelSpawner;
-import nl.han.showcase.Birdblitz.entities.*;
+import nl.han.showcase.Birdblitz.entities.Speler;
+import nl.han.showcase.Birdblitz.entities.Tegenstander;
 import nl.han.showcase.Birdblitz.entities.text.LevensText;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
+
+import java.util.ArrayList;
 
 
 public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
@@ -20,10 +19,11 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     private KogelSpawner kogelSpawner;
     private Birdblitz birdblitz;
     public int huidigeTegenstanders;
-    public int ronde;
+    public int level = 1;
 
-    public Spelscherm(Birdblitz birdblitz ) {
+    public Spelscherm(Birdblitz birdblitz , int level) {
         this.birdblitz = birdblitz;
+        this.level = level;
     }
 
     @Override
@@ -56,47 +56,57 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     }
 
     public void setupTegenstanders(Speler speler, ScoreText scoreText) {
-        if(ronde > 5) {
-            birdblitz.setActiveScene(2);
-        }
-        if(ronde == 5) {
-            Boss boss = new Boss(new Coordinate2D(getWidth()/2, getHeight() / 12), speler, scoreText);
-            addEntity(boss);
-        }
-        else {
-            int max = 6;
-            ArrayList<Tegenstander> tegenstanders = new ArrayList<>();
-            for(huidigeTegenstanders = 0; huidigeTegenstanders < max; huidigeTegenstanders++) {
-                int ruimte = huidigeTegenstanders * 70;
-
-                //Random r = new Random();
-                //int n = r.nextInt(4) + 1;
-                int n = 4;
-
-                if(n == 1) {
-                    tegenstanders.add(new Grunt(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
-                }
-                if(n == 2) {
-                    tegenstanders.add(new Speedy(new Coordinate2D(getWidth()/4 + ruimte, getHeight() / 12), speler, scoreText));
-                }
-                if(n == 3) {
-                    tegenstanders.add(new Heavy(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
-                }
-                if(n == 4) {
-                    tegenstanders.add(new Scherpschutten2(new Coordinate2D(getWidth() / 4 + ruimte, getHeight() / 12), speler, scoreText,kogelSpawner) {
-
-
-
-                    });
-                }
-            }
-            for(Tegenstander t : tegenstanders) {
+        if (level == 1) {
+            ArrayList<Tegenstander> tegenstanders = Level.createEnemies(1, 1, 1, 1, (int) getWidth(), (int) getHeight(), speler, scoreText); // Assign the returned ArrayList
+            for (Tegenstander t : tegenstanders) {
                 addEntity(t);
             }
-            ronde++;
-            System.out.println("Gemaakte tegenstanders: " + huidigeTegenstanders);
         }
     }
+
+//    public void setupTegenstanders(Speler speler, ScoreText scoreText) {
+//        if(ronde > 5) {
+//            birdblitz.setActiveScene(2);
+//        }
+//        if(ronde == 5) {
+//            Boss boss = new Boss(new Coordinate2D(getWidth()/2, getHeight() / 12), speler, scoreText);
+//            addEntity(boss);
+//        }
+//        else {
+//            int max = 6;
+//            ArrayList<Tegenstander> tegenstanders = new ArrayList<>();
+//            for(huidigeTegenstanders = 0; huidigeTegenstanders < max; huidigeTegenstanders++) {
+//                int ruimte = huidigeTegenstanders * 70;
+//
+//                //Random r = new Random();
+//                //int n = r.nextInt(4) + 1;
+//                int n = 4;
+//
+//                if(n == 1) {
+//                    tegenstanders.add(new Grunt(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
+//                }
+//                if(n == 2) {
+//                    tegenstanders.add(new Speedy(new Coordinate2D(getWidth()/4 + ruimte, getHeight() / 12), speler, scoreText));
+//                }
+//                if(n == 3) {
+//                    tegenstanders.add(new Heavy(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
+//                }
+//                if(n == 4) {
+//                    tegenstanders.add(new Scherpschutten2(new Coordinate2D(getWidth() / 4 + ruimte, getHeight() / 12), speler, scoreText,kogelSpawner) {
+//
+//
+//
+//                    });
+//                }
+//            }
+//            for(Tegenstander t : tegenstanders) {
+//                addEntity(t);
+//            }
+//            ronde++;
+//            System.out.println("Gemaakte tegenstanders: " + huidigeTegenstanders);
+//        }
+//    }
+
     public void setHuidigeTegenstanders(int huidig) {
         huidigeTegenstanders = huidig;
     }
