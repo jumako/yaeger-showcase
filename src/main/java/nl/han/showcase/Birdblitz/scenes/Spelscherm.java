@@ -1,3 +1,4 @@
+
 package nl.han.showcase.Birdblitz.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -19,11 +20,10 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     private KogelSpawner kogelSpawner;
     private Birdblitz birdblitz;
     public int huidigeTegenstanders;
-    public int level = 1;
+    public int level;
 
-    public Spelscherm(Birdblitz birdblitz , int level) {
+    public Spelscherm(Birdblitz birdblitz ) {
         this.birdblitz = birdblitz;
-        this.level = level;
     }
 
     @Override
@@ -56,10 +56,9 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     }
 
     public void setupTegenstanders(Speler speler, ScoreText scoreText) {
-        if (level == 1) {
-            ArrayList<Tegenstander> tegenstanders = Level.createEnemies(1, 1, 1, 1, (int) getWidth(), (int) getHeight(), speler, scoreText); // Assign the returned ArrayList
-            for (Tegenstander t : tegenstanders) {
-            }
+        ArrayList<Tegenstander> tegenstanders = Level.createEnemies(2, 2, 2, 2, getWidth(), getHeight(), speler, scoreText);
+        for (Tegenstander t : tegenstanders) {
+            addEntity(t);
         }
     }
 
