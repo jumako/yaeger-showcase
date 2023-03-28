@@ -14,7 +14,7 @@ public class Kogel extends DynamicSpriteEntity implements SceneBorderCrossingWat
 
 	private Class schutterClass;
 
-	public Kogel(Coordinate2D initialLocation, double angle, int snelheid, int schade, Class schutterClass) {
+	public Kogel(Coordinate2D initialLocation , double angle, int snelheid, int schade, Class schutterClass) {
 		super("sprites/kogel.png", initialLocation);
 
 		setMotion(snelheid, angle);
@@ -22,9 +22,10 @@ public class Kogel extends DynamicSpriteEntity implements SceneBorderCrossingWat
 		this.schutterClass = schutterClass;
 	}
 	public Kogel(Coordinate2D initialLocation) {
-		super("entities/playerprojectile.png", initialLocation, new Size(40, 40));
-		setMotion(10, 180);
-		this.schade = 100;
+
+		super("entities/playerprojectile.png", initialLocation, new Size(50, 50));
+		setMotion(10,180);
+		this.schade = Upgrades.Upgradeschade(1);
 	}
 
 

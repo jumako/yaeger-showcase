@@ -10,4 +10,5 @@ module yaeger.showcase {
     opens entities;
     opens fonts;
     exports nl.han.showcase.Birdblitz;
+    exports nl.han.showcase.Birdblitz.entities;
 }

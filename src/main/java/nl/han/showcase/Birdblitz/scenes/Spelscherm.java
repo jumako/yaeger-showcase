@@ -3,6 +3,7 @@ package nl.han.showcase.Birdblitz.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import nl.han.showcase.Birdblitz.Birdblitz;
 import nl.han.showcase.Birdblitz.KogelSpawner;
@@ -35,15 +36,15 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
 
     @Override
     public void setupEntities() {
-        var levensText = new LevensText(new Coordinate2D(50,950));
+        var levensText = new LevensText(new Coordinate2D(50,750));
         addEntity(levensText);
         levensText.setLevensText();
 
-        var scoreText = new ScoreText(new Coordinate2D(650,950));
+        var scoreText = new ScoreText(new Coordinate2D(650,750));
         addEntity(scoreText);
         scoreText.setScoreText(0);
 
-        var speler = new Speler(new Coordinate2D(getWidth()/2, getHeight() / 8 * 7), levensText,scoreText,kogelSpawner,this);
+        var speler = new Speler(new Coordinate2D(getWidth()/2, getHeight() / 8 * 7), levensText,scoreText,kogelSpawner,this,0);
         addEntity(speler);
         setupTegenstanders(speler, scoreText);
 
@@ -56,12 +57,15 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     }
 
     public void setupTegenstanders(Speler speler, ScoreText scoreText) {
-            ArrayList<Tegenstander> tegenstanders = Level.createEnemies(4, 3, 1, 2, getWidth(), getHeight(), speler, scoreText);
-            for (Tegenstander t : tegenstanders) {
-                addEntity(t);
-            }
 
+        ArrayList<Tegenstander> tegenstanders = Level.createEnemies(4, 3, 1, 2, getWidth(), getHeight(), speler, scoreText);
+        for (Tegenstander t : tegenstanders) {
+            if (huidigeTegenstanders >= -10)
+            addEntity(t);
+            System.out.println(huidigeTegenstanders);
+        }
     }
+
 
 
 

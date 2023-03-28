@@ -26,9 +26,10 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	private int score = 0;
 	private final KogelSpawner kogelSpawner;
 	private Spelscherm spelscherm;
+	private int upgrade = 0;
 
 
-	public Speler(Coordinate2D locatie, LevensText levensText,ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm){
+	public Speler(Coordinate2D locatie, LevensText levensText,ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm,int upgrade){
 		super("entities/player.png", locatie, new Size(100,100), 1, 1);
 		this.levensText = levensText;
 		levensText.setLevensText(levens);
@@ -36,7 +37,10 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 		scoreText.setScoreText(getScore());
 		this.kogelSpawner = kogelSpawner;
 		this.setSpelscherm(spelscherm);
+		this.upgrade = upgrade;
 	}
+
+
 
 	@Override
 	public void onCollision(Collider collidingObject) {
@@ -99,16 +103,13 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+		int vogelSnelheid = Upgrades.UpgradeSnelheid(0);
 		if(pressedKeys.contains(KeyCode.LEFT)){
-			setMotion(3,270d);
-		} else if(pressedKeys.contains(KeyCode.RIGHT)){
-			setMotion(3,90d);
-		} else if(!pressedKeys.contains(KeyCode.LEFT) || !pressedKeys.contains(KeyCode.RIGHT)) {
-			setMotion(0,0d);
+			setMotion(vogelSnelheid,270d);
+		} else if(pressedKeys.contains(KeyCode.RIGHT)) {
+			setMotion(vogelSnelheid, 90d);
 		}
-		else {
-			setMotion(0,0d);
-		}
+
 		spatieIngedrukt(pressedKeys);
 	}
 
