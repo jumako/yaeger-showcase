@@ -13,8 +13,6 @@ import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 import java.util.Set;
 
-//import static nl.han.showcase.Birdblitz.entities.Scherpschutten2..levens;
-
 public abstract class Tegenstander extends DynamicSpriteEntity implements Collided,Collider, SceneBorderCrossingWatcher, UpdateExposer{
 
 	protected Speler speler;

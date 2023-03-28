@@ -83,7 +83,7 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
                     tegenstanders.add(new Heavy(new Coordinate2D(getWidth()/4 + ruimte , getHeight() / 12), speler, scoreText));
                 }
                 if(n == 4) {
-                    tegenstanders.add(new Scherpschutten2(new Coordinate2D(getWidth() / 4 + ruimte, getHeight() / 12), speler, scoreText,kogelSpawner) {
+                    tegenstanders.add(new Sluipschutter (new Coordinate2D(getWidth() / 4 + ruimte, getHeight() / 12), speler, scoreText) {
 
 
 
