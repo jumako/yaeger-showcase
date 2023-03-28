@@ -15,7 +15,7 @@ import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 import java.util.ArrayList;
 
 
-public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
+public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
 
     //private Speler speler;
     private KogelSpawner kogelSpawner;
@@ -23,7 +23,7 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
     public int huidigeTegenstanders;
     public int level;
 
-    public Spelscherm(Birdblitz birdblitz ) {
+    public Spelscherm(Birdblitz birdblitz) {
         this.birdblitz = birdblitz;
     }
 
@@ -36,15 +36,15 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
 
     @Override
     public void setupEntities() {
-        var levensText = new LevensText(new Coordinate2D(50,750));
+        var levensText = new LevensText(new Coordinate2D(50, 750));
         addEntity(levensText);
         levensText.setLevensText();
 
-        var scoreText = new ScoreText(new Coordinate2D(650,750));
+        var scoreText = new ScoreText(new Coordinate2D(650, 750));
         addEntity(scoreText);
         scoreText.setScoreText(0);
 
-        var speler = new Speler(new Coordinate2D(getWidth()/2, getHeight() / 8 * 7), levensText,scoreText,kogelSpawner,this,0);
+        var speler = new Speler(new Coordinate2D(getWidth() / 2, getHeight() / 8 * 7), levensText, scoreText, kogelSpawner, this, 0);
         addEntity(speler);
         setupTegenstanders(speler, scoreText);
 
@@ -60,11 +60,13 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer{
 
         ArrayList<Tegenstander> tegenstanders = Level.createEnemies(4, 3, 1, 2, getWidth(), getHeight(), speler, scoreText);
         for (Tegenstander t : tegenstanders) {
-            if (huidigeTegenstanders >= -10)
+        if (huidigeTegenstanders >= -10){
             addEntity(t);
-            System.out.println(huidigeTegenstanders);
+        System.out.println(huidigeTegenstanders);
         }
     }
+
+}
 
 
 

@@ -21,15 +21,15 @@ public class Level {
 
     public static ArrayList<Tegenstander> createEnemies(int aantalGrunt, int aantalHeavy, int aantalScherpschutter, int aantalSpeedy, double width, double height, Speler speler, ScoreText scoreText) {
         ArrayList<Tegenstander> tegenstanders = new ArrayList<>(); // Create new ArrayList
-
         int aantaltegenstanders = 10;
-
+        int n = Random(4);
         for (int i = 0; i < aantaltegenstanders; i++) {
-            int n = Random(4);
-            if (i < 5) {
-                if (n == 0 && aantalGrunt > 0) {
-                    tegenstanders.add(new Grunt(new Coordinate2D(width / 4, height / 12), speler, scoreText));
-                    aantalGrunt--;
+                if (n == 0 ) {
+                    if (aantalGrunt > 0) {
+                        tegenstanders.add(new Grunt(new Coordinate2D(width / 4, height / 12), speler, scoreText));
+                        aantalGrunt--;
+                    }
+
                 } else if (n == 1 && aantalSpeedy > 0) {
                     tegenstanders.add(new Speedy(new Coordinate2D(width / 4, height / 12), speler, scoreText));
                     aantalSpeedy--;
@@ -40,8 +40,11 @@ public class Level {
                     tegenstanders.add(new Sluipschutter(new Coordinate2D(width / 4, height / 12), speler, scoreText));
                     aantalScherpschutter--;
                 }
+
             }
-        }
+
+
+
 
         return tegenstanders; // Return the new ArrayList
     }

@@ -46,7 +46,9 @@ public class Boss extends Tegenstander{
 
 	@Override
 	public void Beweeg() {
+
 		setMotion(snelheid,90);
+
 	}
 
 	@Override
