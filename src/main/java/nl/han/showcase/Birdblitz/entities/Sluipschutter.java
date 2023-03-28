@@ -20,11 +20,12 @@ public class Sluipschutter extends Tegenstander {
         super("entities/sluipschutter.png", initialLocation, new Size(grootte, grootte), speler, scoreText);
     }
 
+
     @Override
     public void onCollision(Collider collidingObject) {
-        if(collidingObject instanceof Kogel) {
-            levens--;
-            if(levens<0) {
+        if (collidingObject instanceof Kogel) {
+            levens = levens - 100;
+            if (levens < 0) {
                 remove();
                 speler.setScore(speler.getScore() + score);
                 scoreText.setScoreText(speler.getScore());

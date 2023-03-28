@@ -10,8 +10,8 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 
 public class Kogel extends DynamicSpriteEntity implements SceneBorderCrossingWatcher, Collider, Collided{
 
+	static int schade = 100;
 
-	private int schade;
 	private Class schutterClass;
 
 	public Kogel(Coordinate2D initialLocation, double angle, int snelheid, int schade, Class schutterClass) {
@@ -24,6 +24,7 @@ public class Kogel extends DynamicSpriteEntity implements SceneBorderCrossingWat
 	public Kogel(Coordinate2D initialLocation) {
 		super("entities/playerprojectile.png", initialLocation, new Size(40, 40));
 		setMotion(10, 180);
+		this.schade = 100;
 	}
 
 
