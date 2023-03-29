@@ -11,7 +11,7 @@ import java.util.Set;
 public class Sluipschutter extends Tegenstander {
 
     public static int grootte = 95;
-    public static int snelheid = 3;
+    public static int snelheid = 10;
     public static int score = 5;
     public int levens = 200;
     public static int schade = 100;

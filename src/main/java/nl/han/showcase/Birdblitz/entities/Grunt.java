@@ -40,7 +40,7 @@ public class Grunt extends Tegenstander{
 	@Override
 	public void Beweeg() {
 		// TODO Auto-generated method stub
-		setMotion(snelheid,300);
+		setMotion(snelheid,360);
 	}
 
 	@Override

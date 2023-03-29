@@ -11,8 +11,8 @@ import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 public class Boss extends Tegenstander{
 	
 	public static int grootte = 300;
-	public int levens = 10;
-	public static int snelheid = 1;
+	public int levens = 5000;
+	public static int snelheid = 3;
 	
 	public Boss(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		super("entities/boss.png",initialLocation ,new Size(grootte,grootte),speler,scoreText);
@@ -46,8 +46,15 @@ public class Boss extends Tegenstander{
 
 	@Override
 	public void Beweeg() {
-
-		setMotion(snelheid,90);
+		if(speler.getSpelerLocatie().getX() > this.getLocationInScene().getX()) {
+			setMotion(snelheid,30);
+		}
+		else if(speler.getSpelerLocatie().getX() == this.getLocationInScene().getX()){
+			setMotion(snelheid,360);
+		}
+		else {
+			setMotion(snelheid, 330);
+		}
 
 	}
 

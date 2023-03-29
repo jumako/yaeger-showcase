@@ -15,7 +15,6 @@ import nl.han.showcase.Birdblitz.KogelSpawner;
 import nl.han.showcase.Birdblitz.entities.text.LevensText;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 import nl.han.showcase.Birdblitz.scenes.Spelscherm;
-
 import java.util.Set;
 
 public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBorderTouchingWatcher, Collided, UpdateExposer{
@@ -27,6 +26,7 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	private final KogelSpawner kogelSpawner;
 	private Spelscherm spelscherm;
 	private int upgrade = 0;
+
 
 
 	public Speler(Coordinate2D locatie, LevensText levensText,ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm,int upgrade){

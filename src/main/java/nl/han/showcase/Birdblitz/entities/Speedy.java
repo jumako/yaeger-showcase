@@ -10,12 +10,13 @@ import java.util.Set;
 
 
 public class Speedy extends Tegenstander{
-	
+
 	public static int grootte = 70;
 	public static int snelheid = 7;
-	public static int score = 10;
 	public int levens = 100;
+	public static int score = 10;
 	public static int schade = 50;
+
 
 	public Speedy(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		super("entities/Speedy.png", initialLocation, new Size(grootte,grootte), speler, scoreText);
@@ -37,17 +38,10 @@ public class Speedy extends Tegenstander{
 
 	@Override
 	public void Beweeg() {
-		if(speler.getSpelerLocatie().getX() > this.getLocationInScene().getX()) {
-			setMotion(snelheid,30);
-		}
-		else if(speler.getSpelerLocatie().getX() == this.getLocationInScene().getX()){
-			setMotion(snelheid,360);
-		}
-		else {
-			setMotion(snelheid, 330);
-		}
-		
+		setMotion(snelheid,360);
 	}
+
+
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
