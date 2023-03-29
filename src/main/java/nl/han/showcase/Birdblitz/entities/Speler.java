@@ -11,6 +11,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
+import nl.han.showcase.Birdblitz.Birdblitz;
 import nl.han.showcase.Birdblitz.KogelSpawner;
 import nl.han.showcase.Birdblitz.entities.text.LevensText;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
@@ -21,7 +22,7 @@ import java.util.Set;
 public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBorderTouchingWatcher, Collided, UpdateExposer{
 
 	private final LevensText levensText;
-	private int levens = 150;
+	private static int levens = 150;
 	private final ScoreText scoreText;
 	private int score = 0;
 	private final KogelSpawner kogelSpawner;
@@ -167,6 +168,9 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 public static int GetPlayerKills(){
 		System.out.println("Kills"+playerkills);
 		return playerkills;
+}
+public static int GetLevens(){
+		return levens;
 }
 
 

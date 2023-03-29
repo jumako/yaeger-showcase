@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
 
     private KogelSpawner kogelSpawner;
-    private Birdblitz birdblitz;
+    private static Birdblitz birdblitz;
     private int level;
 
     public Spelscherm(Birdblitz birdblitz, int level) {
@@ -80,7 +80,9 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
             addEntity(bossEntity);
         }
     }
-
+    public static void EndGame(){
+           birdblitz.setActiveScene(2);
+    }
 
 
 }
