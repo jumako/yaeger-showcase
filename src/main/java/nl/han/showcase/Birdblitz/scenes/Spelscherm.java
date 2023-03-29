@@ -26,7 +26,7 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
         this.level = level;
     }
 
-    
+
 
     @Override
     public void setupScene() {

@@ -30,7 +30,7 @@ public class Level {
         this.aantalTegenstanders = aantalGrunt + aantalHeavy + aantalScherpschutters + aantalSpeedy;
     }
 
-    public int getAantalTegenstanders(){
+    public int getAantalTegenstanders() {
         return aantalTegenstanders;
     }
 
@@ -64,15 +64,15 @@ public class Level {
             System.out.println("Total Enemies: " + aantalTegenstanders);
         }
 
-        if (aantalTegenstanders == 0){
-            boolean boss = SetBoss();
-            Spelscherm.MaakBossAan(boss,speler,scoreText);
+        if (aantalTegenstanders == 0) {
+            //boolean boss = SetBoss();
+            //Spelscherm.MaakBossAan(boss,speler,scoreText);
         }
 
         return tegenstanders;
     }
 
-    private int Random(int maxgetal) {
+    private static int Random(int maxgetal) {
         Random r = new Random();
         int n = r.nextInt(maxgetal);
         return n;
@@ -86,8 +86,9 @@ public class Level {
         huidigeTegenstanders = huidig;
     }
 
-    private boolean SetBoss() {
-        boolean boss = true;
+    //private boolean SetBoss() {
+    //boolean boss = true;
+}
 
 
 
