@@ -3,7 +3,7 @@ package nl.han.showcase.Birdblitz;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import nl.han.showcase.Birdblitz.scenes.Eindscherm;
-import nl.han.showcase.Birdblitz.scenes.LevelMenu;
+//import nl.han.showcase.Birdblitz.scenes.LevelMenu;
 import nl.han.showcase.Birdblitz.scenes.Spelscherm;
 import nl.han.showcase.Birdblitz.scenes.StartScherm;
 
