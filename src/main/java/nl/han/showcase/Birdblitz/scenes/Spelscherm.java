@@ -3,10 +3,10 @@ package nl.han.showcase.Birdblitz.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.EntitySpawnerContainer;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import nl.han.showcase.Birdblitz.Birdblitz;
 import nl.han.showcase.Birdblitz.KogelSpawner;
+import nl.han.showcase.Birdblitz.entities.Boss;
 import nl.han.showcase.Birdblitz.entities.Speler;
 import nl.han.showcase.Birdblitz.entities.Tegenstander;
 import nl.han.showcase.Birdblitz.entities.text.LevensText;
@@ -17,66 +17,68 @@ import java.util.ArrayList;
 
 public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
 
-    //private Speler speler;
     private KogelSpawner kogelSpawner;
     private Birdblitz birdblitz;
-    public int huidigeTegenstanders;
-    public int level;
+    private int level;
 
-    public Spelscherm(Birdblitz birdblitz) {
+    public Spelscherm(Birdblitz birdblitz, int level) {
         this.birdblitz = birdblitz;
+        this.level = level;
     }
+
+    
 
     @Override
     public void setupScene() {
-        // TODO Auto-generated method stub
         setBackgroundImage("backgrounds/hanboven.png");
         kogelSpawner = new KogelSpawner(100);
+        setLevel(level);
     }
 
     @Override
     public void setupEntities() {
-        var levensText = new LevensText(new Coordinate2D(50, 750));
+        LevensText levensText = new LevensText(new Coordinate2D(50, 750));
         addEntity(levensText);
         levensText.setLevensText();
 
-        var scoreText = new ScoreText(new Coordinate2D(650, 750));
+        ScoreText scoreText = new ScoreText(new Coordinate2D(650, 750));
         addEntity(scoreText);
         scoreText.setScoreText(0);
 
-        var speler = new Speler(new Coordinate2D(getWidth() / 2, getHeight() / 8 * 7), levensText, scoreText, kogelSpawner, this, 0);
+        Speler speler = new Speler(new Coordinate2D(getWidth() / 2, getHeight() / 8 * 7), levensText, scoreText, kogelSpawner, this, 0, 0);
         addEntity(speler);
-        setupTegenstanders(speler, scoreText);
-
+        setupEnemies(speler, scoreText);
     }
 
     @Override
     public void setupEntitySpawners() {
-
         addEntitySpawner(kogelSpawner);
     }
 
-    public void setupTegenstanders(Speler speler, ScoreText scoreText) {
-
-        ArrayList<Tegenstander> tegenstanders = Level.createEnemies(4, 3, 1, 2, getWidth(), getHeight(), speler, scoreText);
-        for (Tegenstander t : tegenstanders) {
-        if (huidigeTegenstanders >= -10){
-            addEntity(t);
-        System.out.println(huidigeTegenstanders);
+    private void setLevel(int level) {
+        if (level == 1) {
+            new Level(4, 3, 1, 2);
+            System.out.println(level);
+        } else if (level == 2) {
+            new Level(0, 6, 3, 5);
+        } else if (level == 3) {
+            new Level(0, 10, 5, 0);
         }
     }
 
-}
-
-
-
-
-    public void setHuidigeTegenstanders(int huidig) {
-        huidigeTegenstanders = huidig;
+    private void setupEnemies(Speler speler, ScoreText scoreText) {
+        ArrayList<Tegenstander> enemies = Level.createEnemies(getWidth(), getHeight(), speler, scoreText);
+        for (Tegenstander enemy : enemies) {
+           // Speler.getPlayerKills();
+            addEntity(enemy);
+        }
     }
 
-    public int getHuidigeTegenstanders() {
-        return huidigeTegenstanders;
+    public void spawnBoss(boolean boss, Speler speler, ScoreText scoreText) {
+        if (boss) {
+            Boss bossEntity = new Boss(new Coordinate2D(getWidth() / 2, getHeight() / 12), speler, scoreText);
+            addEntity(bossEntity);
+        }
     }
 
 

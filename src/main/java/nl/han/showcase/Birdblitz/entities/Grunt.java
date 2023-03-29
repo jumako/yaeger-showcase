@@ -32,7 +32,6 @@ public class Grunt extends Tegenstander{
 				remove();
 				speler.setScore(speler.getScore() + score);
 				scoreText.setScoreText(speler.getScore());
-
 			}
 		}
 	}

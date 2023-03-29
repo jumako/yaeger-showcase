@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import nl.han.showcase.Birdblitz.KogelSpawner;
 import nl.han.showcase.Birdblitz.entities.text.LevensText;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
+import nl.han.showcase.Birdblitz.scenes.Level;
 import nl.han.showcase.Birdblitz.scenes.Spelscherm;
 import java.util.Set;
 
@@ -26,10 +27,11 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	private final KogelSpawner kogelSpawner;
 	private Spelscherm spelscherm;
 	private int upgrade = 0;
+	private static int playerkills;
 
 
 
-	public Speler(Coordinate2D locatie, LevensText levensText,ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm,int upgrade){
+	public Speler(Coordinate2D locatie, LevensText levensText,ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm,int upgrade,int playerkills){
 		super("entities/player.png", locatie, new Size(100,100), 1, 1);
 		this.levensText = levensText;
 		levensText.setLevensText(levens);
@@ -38,6 +40,7 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 		this.kogelSpawner = kogelSpawner;
 		this.setSpelscherm(spelscherm);
 		this.upgrade = upgrade;
+		this.playerkills=playerkills;
 	}
 
 
@@ -51,8 +54,8 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 				levensText.setLevensText(levens);
 				this.setScore(this.getScore() + Grunt.score);
 				scoreText.setScoreText(this.getScore());
-				checkAantalTegenstanders();
 				((Tegenstander) collidingObject).remove();
+				playerkills++;
 			}
 			if(collidingObject instanceof Speedy) {
 				levens = levens - Speedy.schade;
@@ -60,8 +63,8 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 				levensText.setLevensText(levens);
 				this.setScore(this.getScore() + Speedy.score);
 				scoreText.setScoreText(this.getScore());
-				checkAantalTegenstanders();
 				((Tegenstander) collidingObject).remove();
+				playerkills++;
 			}
 			if(collidingObject instanceof Heavy) {
 				levens = levens - Heavy.schade;
@@ -69,16 +72,16 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 				levensText.setLevensText(levens);
 				this.setScore(this.getScore() + Heavy.score);
 				scoreText.setScoreText(this.getScore());
-				checkAantalTegenstanders();
 				((Tegenstander) collidingObject).remove();
+				playerkills++;
 			}
 			if(collidingObject instanceof Sluipschutter) {
 				System.out.println(Sluipschutter.schade);
 				levensText.setLevensText(levens);
 				this.setScore(this.getScore() + Sluipschutter.score);
 				scoreText.setScoreText(this.getScore());
-				checkAantalTegenstanders();
 				((Tegenstander) collidingObject).remove();
+				playerkills++;
 			}
 		}
 
@@ -161,13 +164,10 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	public void setSpelscherm(Spelscherm spelscherm) {
 		this.spelscherm = spelscherm;
 	}
+public static int GetPlayerKills(){
+		System.out.println("Kills"+playerkills);
+		return playerkills;
+}
 
-	public void checkAantalTegenstanders() {
-		spelscherm.setHuidigeTegenstanders(spelscherm.getHuidigeTegenstanders()-1);
 
-		if(spelscherm.getHuidigeTegenstanders() <= 0) {
-			spelscherm.setupTegenstanders(this, this.scoreText);
-		}
-		System.out.println("Huidige tegenstanders:" + spelscherm.getHuidigeTegenstanders());
-	}
 }

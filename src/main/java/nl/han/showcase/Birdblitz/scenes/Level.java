@@ -8,55 +8,87 @@ import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+
 public class Level {
     private int levelNumber;
     private int maxEnemies;
-    public static int aantaltegenstanders = 0;
     public static int verslagenTegenstanders;
+    public static int huidigeTegenstanders;
 
-    public Level(int levelNumber, int maxEnemies) {
-        this.levelNumber = levelNumber;
-        this.maxEnemies = maxEnemies;
+    private static int aantalGrunt;
+    private static int aantalHeavy;
+    private static int aantalScherpschutters;
+    private static int aantalSpeedy;
+    private static int aantalTegenstanders;
+
+    public Level(int aantalGrunt, int aantalHeavy, int aantalScherpschutters, int aantalSpeedy) {
+        this.aantalGrunt = aantalGrunt;
+        this.aantalHeavy = aantalHeavy;
+        this.aantalScherpschutters = aantalScherpschutters;
+        this.aantalSpeedy = aantalSpeedy;
+        this.aantalTegenstanders = aantalGrunt + aantalHeavy + aantalScherpschutters + aantalSpeedy;
     }
 
-    public static ArrayList<Tegenstander> createEnemies(int aantalGrunt, int aantalHeavy, int aantalScherpschutter, int aantalSpeedy, double width, double height, Speler speler, ScoreText scoreText) {
+    public int getAantalTegenstanders(){
+        return aantalTegenstanders;
+    }
+
+    public static ArrayList<Tegenstander> createEnemies(double width, double height, Speler speler, ScoreText scoreText) {
+        int n;
         ArrayList<Tegenstander> tegenstanders = new ArrayList<>(); // Create new ArrayList
-        int aantaltegenstanders = 10;
-        int n = Random(4);
-        for (int i = 0; i < aantaltegenstanders; i++) {
-                if (n == 0 ) {
-                    if (aantalGrunt > 0) {
-                        tegenstanders.add(new Grunt(new Coordinate2D(width / 4, height / 12), speler, scoreText));
-                        aantalGrunt--;
-                    }
-
-                } else if (n == 1 && aantalSpeedy > 0) {
-                    tegenstanders.add(new Speedy(new Coordinate2D(width / 4, height / 12), speler, scoreText));
-                    aantalSpeedy--;
-                } else if (n == 2 && aantalHeavy > 0) {
-                    tegenstanders.add(new Heavy(new Coordinate2D(width / 4, height / 12), speler, scoreText));
-                    aantalHeavy--;
-                } else if (n == 3 && aantalScherpschutter > 0) {
-                    tegenstanders.add(new Sluipschutter(new Coordinate2D(width / 4, height / 12), speler, scoreText));
-                    aantalScherpschutter--;
-                }
-
+        int totalEnemies = 50;
+        for (int i = 0; i < totalEnemies; i++) {
+            n = Random(4);
+            if (n == 0 && aantalGrunt > 0) {
+                tegenstanders.add(new Grunt(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
+                aantalGrunt--;
+                aantalTegenstanders--;
+            } else if (n == 1 && aantalSpeedy > 0) {
+                tegenstanders.add(new Speedy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
+                aantalSpeedy--;
+                aantalTegenstanders--;
+            } else if (n == 2 && aantalHeavy > 0) {
+                tegenstanders.add(new Heavy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
+                aantalHeavy--;
+                aantalTegenstanders--;
+            } else if (n == 3 && aantalScherpschutters > 0) {
+                tegenstanders.add(new Sluipschutter(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
+                aantalScherpschutters--;
+                aantalTegenstanders--;
             }
-
-
-
-
-        return tegenstanders; // Return the new ArrayList
-    }
-
-
-
-
-
-
-    private static int Random ( int maxgetal){
-            Random r = new Random();
-            int n = r.nextInt(maxgetal) ;
-            return n;
+            System.out.println("Grunt: " + aantalGrunt);
+            System.out.println("Heavy: " + aantalHeavy);
+            System.out.println("Scherpschutters: " + aantalScherpschutters);
+            System.out.println("Speedy: " + aantalSpeedy);
+            System.out.println("Total Enemies: " + aantalTegenstanders);
         }
+
+        if (aantalTegenstanders == 0){
+            boolean boss = SetBoss();
+            Spelscherm.MaakBossAan(boss,speler,scoreText);
+        }
+
+        return tegenstanders;
     }
+
+    private int Random(int maxgetal) {
+        Random r = new Random();
+        int n = r.nextInt(maxgetal);
+        return n;
+    }
+
+    public int getHuidigeTegenstanders() {
+        return huidigeTegenstanders;
+    }
+
+    public void setHuidigeTegenstanders(int huidig) {
+        huidigeTegenstanders = huidig;
+    }
+
+    private boolean SetBoss() {
+        boolean boss = true;
+
+
+
+
