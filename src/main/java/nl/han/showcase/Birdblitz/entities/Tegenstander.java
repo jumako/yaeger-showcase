@@ -35,7 +35,6 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
 				break;
 			case LEFT:
 				setAnchorLocationX(getSceneWidth()-60);
-				//Pak grootte van de tegenstander en doe dat min sceneWidth
 				break;
 			case RIGHT:
 				setAnchorLocationX(0);

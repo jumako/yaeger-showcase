@@ -30,10 +30,6 @@ public class Level {
         this.aantalTegenstanders = aantalGrunt + aantalHeavy + aantalScherpschutters + aantalSpeedy;
     }
 
-    public int getAantalTegenstanders() {
-        return aantalTegenstanders;
-    }
-
     public static ArrayList<Tegenstander> createEnemies(double width, double height, Speler speler, ScoreText scoreText) {
         int n;
         ArrayList<Tegenstander> tegenstanders = new ArrayList<>(); // Create new ArrayList
@@ -77,17 +73,6 @@ public class Level {
         int n = r.nextInt(maxgetal);
         return n;
     }
-
-    public int getHuidigeTegenstanders() {
-        return huidigeTegenstanders;
-    }
-
-    public void setHuidigeTegenstanders(int huidig) {
-        huidigeTegenstanders = huidig;
-    }
-
-    //private boolean SetBoss() {
-    //boolean boss = true;
 }
 
 
