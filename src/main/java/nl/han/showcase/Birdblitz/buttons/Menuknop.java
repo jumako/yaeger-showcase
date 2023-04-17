@@ -1,5 +1,4 @@
 package nl.han.showcase.Birdblitz.buttons;
-
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;

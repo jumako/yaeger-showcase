@@ -45,7 +45,7 @@ public class Boss extends Tegenstander{
 	}
 
 	@Override
-	public void Beweeg() {
+	public void beweeg() {
 		if(speler.getSpelerLocatie().getX() > this.getLocationInScene().getX()) {
 			setMotion(snelheid,30);
 		}

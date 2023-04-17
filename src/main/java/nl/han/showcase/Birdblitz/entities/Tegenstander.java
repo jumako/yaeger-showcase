@@ -47,10 +47,10 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
 
 
 	public void explicitUpdate(final long timestamp) {
-		Beweeg();
+		beweeg();
 	}
 
-	public abstract void Beweeg();{
+	public abstract void beweeg();{
 
 	}
 

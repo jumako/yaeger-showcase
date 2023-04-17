@@ -37,7 +37,7 @@ public class Speedy extends Tegenstander{
 
 
 	@Override
-	public void Beweeg() {
+	public void beweeg() {
 		setMotion(snelheid,360);
 	}
 
