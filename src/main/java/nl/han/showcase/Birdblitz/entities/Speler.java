@@ -45,43 +45,57 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	@Override
 	public void onCollision(Collider collidingObject) {
 		if (collidingObject instanceof Tegenstander) {
-			if (collidingObject instanceof Grunt) {
-				levens = levens - Grunt.schade;
-				System.out.println(Grunt.schade);
-				levensText.setLevensText(levens);
-				this.setScore(this.getScore() + Grunt.score);
-				scoreText.setScoreText(this.getScore());
-				((Tegenstander) collidingObject).remove();
-				playerkills++;
+
+			if (collidingObject instanceof Grunt){
+				Hit(Grunt);                                                                                                       
 			}
-			if (collidingObject instanceof Speedy) {
-				levens = levens - Speedy.schade;
-				System.out.println(Speedy.schade);
-				levensText.setLevensText(levens);
-				this.setScore(this.getScore() + Speedy.score);
-				scoreText.setScoreText(this.getScore());
-				((Tegenstander) collidingObject).remove();
-				playerkills++;
-			}
-			if (collidingObject instanceof Heavy) {
-				levens = levens - Heavy.schade;
-				System.out.println(Heavy.schade);
-				levensText.setLevensText(levens);
-				this.setScore(this.getScore() + Heavy.score);
-				scoreText.setScoreText(this.getScore());
-				((Tegenstander) collidingObject).remove();
-				playerkills++;
-			}
-			if (collidingObject instanceof Sluipschutter) {
-				System.out.println(Sluipschutter.schade);
-				levensText.setLevensText(levens);
-				this.setScore(this.getScore() + Sluipschutter.score);
-				scoreText.setScoreText(this.getScore());
-				((Tegenstander) collidingObject).remove();
-				playerkills++;
-			}
+//			if (collidingObject instanceof Grunt) {
+//				levens = levens - Grunt.schade;
+//				System.out.println(Grunt.schade);
+//				levensText.setLevensText(levens);
+//				this.setScore(this.getScore() + Grunt.score);
+//				scoreText.setScoreText(this.getScore());
+//				((Tegenstander) collidingObject).remove();
+//				playerkills++;
+//			}
+//			if (collidingObject instanceof Speedy) {
+//				levens = levens - Speedy.schade;
+//				System.out.println(Speedy.schade);
+//				levensText.setLevensText(levens);
+//				this.setScore(this.getScore() + Speedy.score);
+//				scoreText.setScoreText(this.getScore());
+//				((Tegenstander) collidingObject).remove();
+//				playerkills++;
+//			}
+//			if (collidingObject instanceof Heavy) {
+//				levens = levens - Heavy.schade;
+//				System.out.println(Heavy.schade);
+//				levensText.setLevensText(levens);
+//				this.setScore(this.getScore() + Heavy.score);
+//				scoreText.setScoreText(this.getScore());
+//				((Tegenstander) collidingObject).remove();
+//				playerkills++;
+//			}
+//			if (collidingObject instanceof Sluipschutter) {
+//				System.out.println(Sluipschutter.schade);
+//				levensText.setLevensText(levens);
+//				this.setScore(this.getScore() + Sluipschutter.score);
+//				scoreText.setScoreText(this.getScore());
+//				((Tegenstander) collidingObject).remove();
+//				playerkills++;
+//			}
 		}
 
+	}
+
+	public void Hit(Tegenstander vogel){
+		levens = levens - Speedy.schade;
+		System.out.println(Speedy.schade);
+		levensText.setLevensText(levens);
+		this.setScore(this.getScore() + Speedy.score);
+		scoreText.setScoreText(this.getScore());
+		((Tegenstander) collidingObject).remove();
+		playerkills++;
 	}
 
 	@Override
