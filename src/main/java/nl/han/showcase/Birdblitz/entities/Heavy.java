@@ -21,19 +21,6 @@ public class Heavy extends Tegenstander {
 	public Heavy(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		super("entities/Vulture.png", initialLocation, new Size(grootte, grootte), speler, scoreText);
 	}
-
-	@Override
-	public void onCollision(Collider collidingObject) {
-		if (collidingObject instanceof Kogel) {
-			levens = levens - 100;
-			if (levens < 0) {
-				remove();
-				speler.setScore(speler.getScore() + score);
-				scoreText.setScoreText(speler.getScore());
-			}
-		}
-	}
-
 	@Override
 	public void beweeg() {
 		setMotion(snelheid, 360);
@@ -41,6 +28,11 @@ public class Heavy extends Tegenstander {
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+
+	}
+
+	@Override
+	public void geluid() {
 
 	}
 }

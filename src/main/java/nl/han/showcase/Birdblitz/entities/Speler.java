@@ -42,13 +42,13 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	}
 
 
-	@Override
-	public void onCollision(Collider collidingObject) {
-		if (collidingObject instanceof Tegenstander) {
-
-			if (collidingObject instanceof Grunt){
-				Hit(Grunt);                                                                                                       
-			}
+//	@Override
+//	public void onCollision(Collider collidingObject) {
+//		if (collidingObject instanceof Tegenstander) {
+//
+//			if (collidingObject instanceof Grunt){
+//				Hit(Grunt);
+//			}
 //			if (collidingObject instanceof Grunt) {
 //				levens = levens - Grunt.schade;
 //				System.out.println(Grunt.schade);
@@ -84,19 +84,19 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 //				((Tegenstander) collidingObject).remove();
 //				playerkills++;
 //			}
-		}
+	//	}
 
-	}
+	//}
 
-	public void Hit(Tegenstander vogel){
-		levens = levens - Speedy.schade;
-		System.out.println(Speedy.schade);
-		levensText.setLevensText(levens);
-		this.setScore(this.getScore() + Speedy.score);
-		scoreText.setScoreText(this.getScore());
-		((Tegenstander) collidingObject).remove();
-		playerkills++;
-	}
+//	public void Hit(Tegenstander vogel){
+//		levens = levens - Speedy.schade;
+//		System.out.println(Speedy.schade);
+//		levensText.setLevensText(levens);
+//		this.setScore(this.getScore() + Speedy.score);
+//		scoreText.setScoreText(this.getScore());
+//		((Tegenstander) collidingObject).remove();
+//		playerkills++;
+//	}
 
 	@Override
 	public void notifyBoundaryTouching(SceneBorder border) {
@@ -159,4 +159,13 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 		this.spelscherm = spelscherm;
 
 	}
+
+	@Override
+	public void onCollision(Collider collidingObject) {
+		if (collidingObject instanceof Tegenstander) {
+			Tegenstander tegenstander = (Tegenstander) collidingObject;
+			tegenstander.aanval();
+		}
+	}
+
 }
