@@ -33,7 +33,7 @@ public class Level {
     public static ArrayList<Tegenstander> createEnemies(double width, double height, Speler speler, ScoreText scoreText) {
         int n;
         ArrayList<Tegenstander> tegenstanders = new ArrayList<>(); // Create new ArrayList
-        int totalEnemies = 50;
+        int totalEnemies = 2;
         for (int i = 0; i < totalEnemies; i++) {
             n = Random(4);
             if (n == 0 && aantalGrunt > 0) {

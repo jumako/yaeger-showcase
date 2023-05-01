@@ -39,5 +39,20 @@ public class Sluipschutter extends Tegenstander {
 
     }
 
+    @Override
+    public void geluid() {
+
+    }
+
+    @Override
+    public int getSchade() {
+        return schade;
+    }
+
+    @Override
+    public int getScore() {
+        return score;
+    }
+
 }
 

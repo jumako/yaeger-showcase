@@ -64,22 +64,16 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
 
 	public void onCollision(Collider collidingObject) {
 		if (collidingObject instanceof Kogel) {
-			levens = levens - 100;
-			if (levens < 0) {
+			levens -= 100;
+			if (levens <= 0) {
 				remove();
-				speler.setScore(speler.getScore() + score);
-				scoreText.setScoreText(speler.getScore());
+				speler.setScore(this.getScore() + getScore());
+				scoreText.setScoreText(this.getScore());
 			}
 		}
 	}
 
-	public void aanval() {
-		levens = levens - this.schade;
-		System.out.println(this.schade);
-		levensText.setLevensText(levens);
-		this.setScore(this.getScore() + this.score);
-		scoreText.setScoreText(this.getScore());
-		remove();
-		playerkills++;
-	}
+	public abstract int getSchade();
+	public abstract int getScore();
+
 }

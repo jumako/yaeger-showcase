@@ -35,6 +35,16 @@ public class Speedy extends Tegenstander{
 		}
 	}
 
+	@Override
+	public int getSchade() {
+		return schade;
+	}
+
+	@Override
+	public int getScore() {
+		return score;
+	}
+
 
 	@Override
 	public void beweeg() {
@@ -45,6 +55,11 @@ public class Speedy extends Tegenstander{
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+
+	}
+
+	@Override
+	public void geluid() {
 
 	}
 

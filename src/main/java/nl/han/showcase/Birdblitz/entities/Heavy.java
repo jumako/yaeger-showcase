@@ -35,4 +35,14 @@ public class Heavy extends Tegenstander {
 	public void geluid() {
 
 	}
+
+	@Override
+	public int getSchade() {
+		return schade;
+	}
+
+	@Override
+	public int getScore() {
+		return score;
+	}
 }

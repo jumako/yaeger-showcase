@@ -13,7 +13,7 @@ public class Boss extends Tegenstander{
 	public static int grootte = 300;
 	public int levens = 5000;
 	public static int snelheid = 3;
-	
+
 	public Boss(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		super("entities/boss.png",initialLocation ,new Size(grootte,grootte),speler,scoreText);
 	}
@@ -28,6 +28,16 @@ public class Boss extends Tegenstander{
 				scoreText.setScoreText(speler.getScore());
 			}
 		}
+	}
+
+	@Override
+	public int getSchade() {
+		return 0;
+	}
+
+	@Override
+	public int getScore() {
+		return score;
 	}
 
 	@Override
@@ -60,6 +70,11 @@ public class Boss extends Tegenstander{
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+
+	}
+
+	@Override
+	public void geluid() {
 
 	}
 
