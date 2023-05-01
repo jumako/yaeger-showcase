@@ -17,6 +17,7 @@ public class StartScherm extends StaticScene {
     @Override
     public void setupScene() {
         setBackgroundImage("backgrounds/StartScherm.png");
+        setBackgroundAudio("audio/Angry-Birds-Theme-Song.mp3");
 
     }
 
