@@ -3,6 +3,7 @@ package nl.han.showcase.Birdblitz.entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.media.SoundClip;
 import javafx.scene.input.KeyCode;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
@@ -60,7 +61,7 @@ public class Speedy extends Tegenstander{
 
 	@Override
 	public void geluid() {
-
+		var popSound = new SoundClip("audio/pop.mp3");
 	}
 
 }

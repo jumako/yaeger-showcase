@@ -3,6 +3,7 @@ package nl.han.showcase.Birdblitz.entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.media.SoundClip;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 import javafx.scene.input.KeyCode;
 
@@ -41,7 +42,7 @@ public class Sluipschutter extends Tegenstander {
 
     @Override
     public void geluid() {
-
+        var popSound = new SoundClip("audio/pop.mp3");
     }
 
     @Override
