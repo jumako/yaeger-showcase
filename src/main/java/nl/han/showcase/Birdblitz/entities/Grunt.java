@@ -33,7 +33,10 @@ public class Grunt extends Tegenstander{
 
 	@Override
 	public void geluid() {
-		new SoundClip("audio/GruntDeathSound.mp3");
+
+		var gruntSound = new SoundClip("audio/GruntDeathSoundv2.mp3");
+		gruntSound.play();
+		System.out.println("ahhhhhhhhhhhhhhhh");
 	}
 
 	public int getSchade() {

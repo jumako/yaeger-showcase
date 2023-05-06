@@ -34,7 +34,8 @@ public class Heavy extends Tegenstander {
 
 	@Override
 	public void geluid() {
-		var popSound = new SoundClip("audio/pop.mp3");
+		var heavySound = new SoundClip("audio/pop.mp3");
+		heavySound.play();
 	}
 
 	@Override

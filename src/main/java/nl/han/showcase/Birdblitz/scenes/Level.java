@@ -35,7 +35,7 @@ public class Level {
         ArrayList<Tegenstander> tegenstanders = new ArrayList<>(); // Create new ArrayList
         int totalEnemies = 2;
         for (int i = 0; i < totalEnemies; i++) {
-            n = Random(4);
+            n = Random(1);
             if (n == 0 && aantalGrunt > 0) {
                 tegenstanders.add(new Grunt(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
                 aantalGrunt--;

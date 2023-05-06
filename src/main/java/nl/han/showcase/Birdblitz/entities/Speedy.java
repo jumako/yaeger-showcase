@@ -61,7 +61,8 @@ public class Speedy extends Tegenstander{
 
 	@Override
 	public void geluid() {
-		var popSound = new SoundClip("audio/pop.mp3");
+		var speedySound = new SoundClip("audio/pop.mp3");
+		speedySound.play();
 	}
 
 }
