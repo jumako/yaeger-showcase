@@ -12,6 +12,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 import nl.han.showcase.Birdblitz.KogelSpawner;
+import nl.han.showcase.Birdblitz.entities.text.KillText;
 import nl.han.showcase.Birdblitz.entities.text.LevensText;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 import nl.han.showcase.Birdblitz.scenes.Spelscherm;
@@ -20,38 +21,41 @@ import java.util.Set;
 public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBorderTouchingWatcher, Collided, UpdateExposer {
 
 	private final LevensText levensText;
-	private static int levens = 150;
 	private final ScoreText scoreText;
+	private static  KillText killText;
 	private int score = 0;
 	private final KogelSpawner kogelSpawner;
 	private Spelscherm spelscherm;
-	private int upgrade = 0;
-	private static int playerkills;
+	public static int spelerKill = 0;
 
 
-	public Speler(Coordinate2D locatie, LevensText levensText, ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm, int upgrade, int playerkills) {
+	public Speler(Coordinate2D locatie, LevensText levensText, ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm, KillText killText) {
 		super("entities/player.png", locatie, new Size(100, 100), 1, 1);
 		this.levensText = levensText;
-		levensText.setLevensText(levens);
+		levensText.setLevensText(Upgrades.spelerLevens);
 		this.scoreText = scoreText;
 		scoreText.setScoreText(getScore());
 		this.kogelSpawner = kogelSpawner;
 		this.setSpelscherm(spelscherm);
-		this.upgrade = upgrade;
-		this.playerkills = playerkills;
+		this.killText = killText;
+
+	}
+
+	public static void Kill() {
+		    spelerKill++;
+			killText.setKillText(spelerKill);
 	}
 
 	@Override
 	public void onCollision(Collider collidingObject) {
 		if (collidingObject instanceof Tegenstander) {
 			Tegenstander tegenstander = (Tegenstander) collidingObject;
-			levens -= tegenstander.getSchade();
+			Upgrades.spelerLevens -= tegenstander.getSchade();
 			System.out.println(tegenstander.getSchade());
-			levensText.setLevensText(levens);
+			levensText.setLevensText(Upgrades.spelerLevens);
 			this.setScore(this.getScore() + tegenstander.getScore());
 			scoreText.setScoreText(this.getScore());
 			tegenstander.remove();
-			playerkills++;
 		}
 	}
 
@@ -77,7 +81,7 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-		int vogelSnelheid = Upgrades.UpgradeSnelheid(0);
+		int vogelSnelheid = Upgrades.spelerSnelheid;
 		if (pressedKeys.contains(KeyCode.LEFT)) {
 			setMotion(vogelSnelheid, 270d);
 		} else if (pressedKeys.contains(KeyCode.RIGHT)) {

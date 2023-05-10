@@ -9,6 +9,7 @@ import nl.han.showcase.Birdblitz.KogelSpawner;
 import nl.han.showcase.Birdblitz.entities.Boss;
 import nl.han.showcase.Birdblitz.entities.Speler;
 import nl.han.showcase.Birdblitz.entities.Tegenstander;
+import nl.han.showcase.Birdblitz.entities.text.KillText;
 import nl.han.showcase.Birdblitz.entities.text.LevensText;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
@@ -45,7 +46,11 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
         addEntity(scoreText);
         scoreText.setScoreText(0);
 
-        Speler speler = new Speler(new Coordinate2D(getWidth() / 2, getHeight() / 8 * 7), levensText, scoreText, kogelSpawner, this, 0, 0);
+        KillText killText =  new KillText(new Coordinate2D(300,750));
+        addEntity(killText);
+        killText.setKillText(0);
+
+        Speler speler = new Speler(new Coordinate2D(getWidth() / 2, getHeight() / 8 * 7), levensText, scoreText, kogelSpawner, this,killText);
         addEntity(speler);
         setupEnemies(speler, scoreText);
     }

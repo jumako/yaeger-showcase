@@ -64,10 +64,11 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
 
     public void onCollision(Collider collidingObject) {
         if (collidingObject instanceof Kogel) {
-            levens -= 100;
+            geluid();
+            levens -= Kogel.schade;
             if (levens <= 0) {
-                geluid();
                 remove();
+                Speler.Kill();
                 speler.setScore(this.getScore() + getScore());
                 scoreText.setScoreText(this.getScore());
             }
