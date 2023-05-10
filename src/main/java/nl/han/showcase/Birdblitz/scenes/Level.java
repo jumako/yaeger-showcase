@@ -21,6 +21,10 @@ public class Level {
     private static int aantalScherpschutters;
     private static int aantalSpeedy;
     private static int aantalTegenstanders;
+    private static final int gruntNummer = 0;
+    private static final int speedyNummer = 1;
+    private static final int heavyNummer=2;
+    private static final int scherpschutterNummer=3;
 
     public Level(int aantalGrunt, int aantalHeavy, int aantalScherpschutters, int aantalSpeedy) {
         this.aantalGrunt = aantalGrunt;
@@ -31,47 +35,55 @@ public class Level {
     }
 
     public static ArrayList<Tegenstander> createEnemies(double width, double height, Speler speler, ScoreText scoreText) {
-        int n;
-        ArrayList<Tegenstander> tegenstanders = new ArrayList<>(); // Create new ArrayList
-        int totalEnemies = 2;
-        for (int i = 0; i < totalEnemies; i++) {
-            n = Random(1);
-            if (n == 0 && aantalGrunt > 0) {
+        ArrayList<Tegenstander> tegenstandersNummers = new ArrayList<>();
+        ArrayList<Tegenstander> array = tegenstandersNummers;
+        array = vulArray(aantalGrunt, gruntNummer, array);
+        array = vulArray(aantalHeavy, heavyNummer, array);
+        array = vulArray(aantalScherpschutters, scherpschutterNummer, array);
+        array = vulArray(aantalSpeedy, speedyNummer, array);
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(array.get(i));
+        }
+        ArrayList<Tegenstander> tegenstanders = new ArrayList<>();
+        for (int i = 0; i < tegenstandersNummers.size(); i++) {
+            int tegenstanderNummer = tegenstandersNummers.get(i);
+            if (tegenstanderNummer == 0) {
                 tegenstanders.add(new Grunt(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-                aantalGrunt--;
-                aantalTegenstanders--;
-            } else if (n == 1 && aantalSpeedy > 0) {
+            } else if (tegenstanderNummer == 1) {
                 tegenstanders.add(new Speedy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-                aantalSpeedy--;
-                aantalTegenstanders--;
-            } else if (n == 2 && aantalHeavy > 0) {
+            } else if (tegenstanderNummer == 2) {
                 tegenstanders.add(new Heavy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-                aantalHeavy--;
-                aantalTegenstanders--;
-            } else if (n == 3 && aantalScherpschutters > 0) {
+            } else if (tegenstanderNummer == 3) {
                 tegenstanders.add(new Sluipschutter(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-                aantalScherpschutters--;
-                aantalTegenstanders--;
             }
-            System.out.println("Grunt: " + aantalGrunt);
-            System.out.println("Heavy: " + aantalHeavy);
-            System.out.println("Scherpschutters: " + aantalScherpschutters);
-            System.out.println("Speedy: " + aantalSpeedy);
-            System.out.println("Total Enemies: " + aantalTegenstanders);
         }
+        System.out.println("Grunt: " + aantalGrunt);
+        System.out.println("Heavy: " + aantalHeavy);
+        System.out.println("Scherpschutters: " + aantalScherpschutters);
+        System.out.println("Speedy: " + aantalSpeedy);
+        System.out.println("Total Enemies: " + tegenstandersNummers.size());
 
-        if (aantalTegenstanders == 0) {
-            //boolean boss = SetBoss();
-            //Spelscherm.MaakBossAan(boss,speler,scoreText);
-        }
+        //if () {
+        //boolean boss = SetBoss();
+        //Spelscherm.MaakBossAan(boss,speler,scoreText);
+        //}
 
         return tegenstanders;
     }
+
 
     private static int Random(int maxgetal) {
         Random r = new Random();
         int n = r.nextInt(maxgetal);
         return n;
+    }
+
+    private static ArrayList vulArray(int aantalSoortVogel,int soortNummer,ArrayList array){
+        for (int i = 0; i < aantalSoortVogel;i++){
+            array.add(soortNummer);
+
+        }
+        return array;
     }
 }
 

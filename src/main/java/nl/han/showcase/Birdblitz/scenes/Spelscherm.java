@@ -62,7 +62,7 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
 
     private void setLevel(int level) {
         if (level == 1) {
-            new Level(4, 0, 0, 0);
+            new Level(4, 3, 1, 2);
             System.out.println(level);
         } else if (level == 2) {
             new Level(0, 6, 3, 5);
