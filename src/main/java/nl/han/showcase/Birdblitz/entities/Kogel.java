@@ -17,7 +17,7 @@ public class Kogel extends DynamicSpriteEntity implements SceneBorderCrossingWat
 
 		super("entities/playerprojectile.png", initialLocation, new Size(50, 50));
 		setMotion(10,180);
-		this.schade = Upgrades.kogelSchade;
+		this.schade = Speler.kogelSchade;
 	}
 
 

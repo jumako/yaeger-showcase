@@ -42,7 +42,7 @@ public class Sluipschutter extends Tegenstander {
 
     @Override
     public void geluid() {
-        var sluipschutterSound = new SoundClip("audio/SluipschutterDeath");
+        var sluipschutterSound = new SoundClip("audio/SluipschutterDeath.mp3");
         sluipschutterSound.play();
     }
 

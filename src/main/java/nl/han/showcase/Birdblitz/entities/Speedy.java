@@ -49,7 +49,16 @@ public class Speedy extends Tegenstander{
 
 	@Override
 	public void beweeg() {
-		setMotion(snelheid,360);
+		if(speler.getSpelerLocatie().getX() > this.getLocationInScene().getX()) {
+			setMotion(snelheid,30);
+		}
+		else if(speler.getSpelerLocatie().getX() == this.getLocationInScene().getX()){
+			setMotion(snelheid,360);
+		}
+		else {
+			setMotion(snelheid, 330);
+		}
+
 	}
 
 
@@ -61,7 +70,7 @@ public class Speedy extends Tegenstander{
 
 	@Override
 	public void geluid() {
-		var speedySound = new SoundClip("audio/pop.mp3");
+		var speedySound = new SoundClip("audio/SpeedyDeathSound.mp3");
 		speedySound.play();
 	}
 

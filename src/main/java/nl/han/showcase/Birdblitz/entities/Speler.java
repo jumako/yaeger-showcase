@@ -27,12 +27,16 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	private final KogelSpawner kogelSpawner;
 	private Spelscherm spelscherm;
 	public static int spelerKill = 0;
+	public static int spelerLevens = 200;
+	public static int spelerSnelheid = 3;
+	public static int kogelSchade = 100;
+	public static int  upgradeLevel = 0;
 
 
 	public Speler(Coordinate2D locatie, LevensText levensText, ScoreText scoreText, KogelSpawner kogelSpawner, Spelscherm spelscherm, KillText killText) {
 		super("entities/player.png", locatie, new Size(100, 100), 1, 1);
 		this.levensText = levensText;
-		levensText.setLevensText(Upgrades.spelerLevens);
+		levensText.setLevensText(spelerLevens);
 		this.scoreText = scoreText;
 		scoreText.setScoreText(getScore());
 		this.kogelSpawner = kogelSpawner;
@@ -44,15 +48,20 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	public static void Kill() {
 		    spelerKill++;
 			killText.setKillText(spelerKill);
+			if(upgradeLevel <=3){
+				upgradeLevel++;
+				upgradeSpeler(upgradeLevel);
+				System.out.println(upgradeLevel+"level");
+			}
 	}
 
 	@Override
 	public void onCollision(Collider collidingObject) {
 		if (collidingObject instanceof Tegenstander) {
 			Tegenstander tegenstander = (Tegenstander) collidingObject;
-			Upgrades.spelerLevens -= tegenstander.getSchade();
+			spelerLevens -= tegenstander.getSchade();
 			System.out.println(tegenstander.getSchade());
-			levensText.setLevensText(Upgrades.spelerLevens);
+			levensText.setLevensText(spelerLevens);
 			this.setScore(this.getScore() + tegenstander.getScore());
 			scoreText.setScoreText(this.getScore());
 			tegenstander.remove();
@@ -81,7 +90,8 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
-		int vogelSnelheid = Upgrades.spelerSnelheid;
+		int vogelSnelheid = spelerSnelheid;
+		System.out.println(spelerSnelheid+"snielheid");
 		if (pressedKeys.contains(KeyCode.LEFT)) {
 			setMotion(vogelSnelheid, 270d);
 		} else if (pressedKeys.contains(KeyCode.RIGHT)) {
@@ -120,6 +130,20 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	public void setSpelscherm(Spelscherm spelscherm) {
 		this.spelscherm = spelscherm;
 
+	}
+
+	static void upgradeSpeler(int upgradeLevel) {
+
+		if (upgradeLevel == 1) {
+			spelerSnelheid = spelerSnelheid * 10;
+		}
+		if (upgradeLevel == 2) {
+			spelerLevens = spelerLevens * 5;
+		}
+		if (upgradeLevel == 3) {
+			kogelSchade = kogelSchade * 2;
+		}
+		System.out.println(spelerSnelheid+"speed");
 	}
 
 
