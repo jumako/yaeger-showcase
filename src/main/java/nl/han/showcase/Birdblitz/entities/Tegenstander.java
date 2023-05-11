@@ -16,6 +16,7 @@ import java.util.Set;
 public abstract class Tegenstander extends DynamicSpriteEntity implements Collided, Collider, SceneBorderCrossingWatcher, UpdateExposer {
 
     protected Speler speler;
+    public static int aantalTegenstanders = 0;
     protected ScoreText scoreText;
 
     public int score;
@@ -26,6 +27,7 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
         super(resource, initialLocation, grootte);
         this.speler = speler;
         this.scoreText = scoreText;
+        aantalTegenstanders++;
     }
 
     public void notifyBoundaryCrossing(SceneBorder border) {

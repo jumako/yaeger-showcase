@@ -6,6 +6,7 @@ import nl.han.showcase.Birdblitz.entities.*;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -20,42 +21,56 @@ public class Level {
     private static int aantalHeavy;
     private static int aantalScherpschutters;
     private static int aantalSpeedy;
-    private static int aantalTegenstanders;
-    private static final int gruntNummer = 0;
-    private static final int speedyNummer = 1;
-    private static final int heavyNummer=2;
-    private static final int scherpschutterNummer=3;
+    private static final int gruntNummer = 1;
+    private static final int speedyNummer = 2;
+    private static final int heavyNummer=3;
+    private static final int scherpschutterNummer=4;
 
     public Level(int aantalGrunt, int aantalHeavy, int aantalScherpschutters, int aantalSpeedy) {
         this.aantalGrunt = aantalGrunt;
         this.aantalHeavy = aantalHeavy;
         this.aantalScherpschutters = aantalScherpschutters;
         this.aantalSpeedy = aantalSpeedy;
-        this.aantalTegenstanders = aantalGrunt + aantalHeavy + aantalScherpschutters + aantalSpeedy;
     }
 
     public static ArrayList<Tegenstander> createEnemies(double width, double height, Speler speler, ScoreText scoreText) {
-        ArrayList<Tegenstander> tegenstandersNummers = new ArrayList<>();
-        ArrayList<Tegenstander> array = tegenstandersNummers;
-        array = vulArray(aantalGrunt, gruntNummer, array);
-        array = vulArray(aantalHeavy, heavyNummer, array);
-        array = vulArray(aantalScherpschutters, scherpschutterNummer, array);
-        array = vulArray(aantalSpeedy, speedyNummer, array);
-        for (int i = 0; i < array.size(); i++) {
-            System.out.println(array.get(i));
-        }
+        ArrayList<Integer> tegenstandersNummers = new ArrayList<>();
         ArrayList<Tegenstander> tegenstanders = new ArrayList<>();
+        for (int i = 0; i < aantalGrunt;i++){
+            tegenstandersNummers.add(gruntNummer);
+        }
+        for (int i = 0; i < aantalHeavy;i++){
+            tegenstandersNummers.add(heavyNummer);
+        }
+        for (int i = 0; i < aantalScherpschutters;i++){
+            tegenstandersNummers.add(scherpschutterNummer);
+        }
+        for (int i = 0; i < aantalSpeedy;i++){
+            tegenstandersNummers.add(speedyNummer);
+        }
+       shuffleArrayList(tegenstandersNummers);
+
+//        vulArray(aantalGrunt, gruntNummer);
+//        vulArray(aantalHeavy, heavyNummer);
+//        vulArray(aantalScherpschutters, scherpschutterNummer);
+//        vulArray(aantalSpeedy, speedyNummer);
         for (int i = 0; i < tegenstandersNummers.size(); i++) {
-            int tegenstanderNummer = tegenstandersNummers.get(i);
-            if (tegenstanderNummer == 0) {
+            System.out.println(tegenstandersNummers.get(i));
+        }
+        for (int i = 0; i < tegenstandersNummers.size(); i++) {
+            int nummer = tegenstandersNummers.get(i);
+            int aantalTegenstanders = Tegenstander.aantalTegenstanders;
+            if (aantalTegenstanders <= 4){
+            if (nummer == 1) {
                 tegenstanders.add(new Grunt(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-            } else if (tegenstanderNummer == 1) {
+            } else if (nummer == 2) {
                 tegenstanders.add(new Speedy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-            } else if (tegenstanderNummer == 2) {
+            } else if (nummer == 3) {
                 tegenstanders.add(new Heavy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-            } else if (tegenstanderNummer == 3) {
+            } else if (nummer == 4) {
                 tegenstanders.add(new Sluipschutter(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
             }
+        }
         }
         System.out.println("Grunt: " + aantalGrunt);
         System.out.println("Heavy: " + aantalHeavy);
@@ -78,13 +93,19 @@ public class Level {
         return n;
     }
 
-    private static ArrayList vulArray(int aantalSoortVogel,int soortNummer,ArrayList array){
-        for (int i = 0; i < aantalSoortVogel;i++){
-            array.add(soortNummer);
-
-        }
-        return array;
+    public static void shuffleArrayList(ArrayList<?> list) {
+        Collections.shuffle(list);
     }
+
+
+
+
+
+//    private static void vulArray(int aantalSoortVogel,int soortNummer){
+//        for (int i = 0; i < aantalSoortVogel;i++){
+//            tegenstandersNummer.add(soortNummer);
+//        }
+//    }
 }
 
 

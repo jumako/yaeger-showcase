@@ -73,10 +73,11 @@ public class Spelscherm extends DynamicScene implements EntitySpawnerContainer {
 
     private void setupEnemies(Speler speler, ScoreText scoreText) {
         ArrayList<Tegenstander> enemies = Level.createEnemies(getWidth(), getHeight(), speler, scoreText);
+       System.out.println(Tegenstander.aantalTegenstanders + "test");
         for (Tegenstander enemy : enemies) {
-           // Speler.getPlayerKills();
-            addEntity(enemy);
-        }
+                // Speler.getPlayerKills();
+                addEntity(enemy);
+            }
     }
 
     public void spawnBoss(boolean boss, Speler speler, ScoreText scoreText) {
