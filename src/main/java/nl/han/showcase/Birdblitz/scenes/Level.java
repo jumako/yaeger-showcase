@@ -13,11 +13,6 @@ import java.util.Random;
 
 
 public class Level {
-    private int levelNumber;
-    private int maxEnemies;
-    public static int verslagenTegenstanders;
-    public static int huidigeTegenstanders;
-
     private static int aantalGrunt;
     private static int aantalHeavy;
     private static int aantalScherpschutters;
