@@ -31,20 +31,6 @@ public class Boss extends Tegenstander{
 	}
 
 	@Override
-	public void notifyBoundaryCrossing(SceneBorder border) {
-		switch(border) {
-		case LEFT:
-			setMotion(snelheid,90);
-			break;
-		case RIGHT:
-			setMotion(snelheid,270);
-			break;
-		default:
-			break;
-		}
-	}
-
-	@Override
 	public void beweeg() {
 		if(speler.getSpelerLocatie().getX() > this.getLocationInScene().getX()) {
 			setMotion(snelheid,30);
