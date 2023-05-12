@@ -14,13 +14,15 @@ public class Boss extends Tegenstander{
 	public int levens = 5000;
 	public static int snelheid = 3;
 
+	public static int schade = 500;
+
 	public Boss(Coordinate2D initialLocation, Speler speler, ScoreText scoreText) {
 		super("entities/boss.png",initialLocation ,new Size(grootte,grootte),speler,scoreText);
 	}
 
 	@Override
 	public int getSchade() {
-		return 0;
+		return schade;
 	}
 
 	@Override
