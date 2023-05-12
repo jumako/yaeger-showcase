@@ -52,13 +52,13 @@ public class Level {
             int nummer = tegenstandersNummers.get(i);
             int aantalTegenstanders = Tegenstander.aantalTegenstanders;
             if (aantalTegenstanders <= 4){
-            if (nummer == 1) {
+            if (nummer == gruntNummer) {
                 tegenstanders.add(new Grunt(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-            } else if (nummer == 2) {
+            } else if (nummer == speedyNummer) {
                 tegenstanders.add(new Speedy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-            } else if (nummer == 3) {
+            } else if (nummer == heavyNummer) {
                 tegenstanders.add(new Heavy(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
-            } else if (nummer == 4) {
+            } else if (nummer == scherpschutterNummer) {
                 tegenstanders.add(new Sluipschutter(new Coordinate2D(Random(700) + 20, height), speler, scoreText));
             }
         }
