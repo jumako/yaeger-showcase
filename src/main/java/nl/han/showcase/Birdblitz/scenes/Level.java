@@ -3,6 +3,7 @@ package nl.han.showcase.Birdblitz.scenes;
 ;
 import com.github.hanyaeger.api.Coordinate2D;
 import nl.han.showcase.Birdblitz.entities.*;
+import nl.han.showcase.Birdblitz.entities.text.KillText;
 import nl.han.showcase.Birdblitz.entities.text.ScoreText;
 
 import java.util.ArrayList;
@@ -49,11 +50,6 @@ public class Level {
             tegenstandersNummers.add(speedyNummer);
         }
        shuffleArrayList(tegenstandersNummers);
-
-//        vulArray(aantalGrunt, gruntNummer);
-//        vulArray(aantalHeavy, heavyNummer);
-//        vulArray(aantalScherpschutters, scherpschutterNummer);
-//        vulArray(aantalSpeedy, speedyNummer);
         for (int i = 0; i < tegenstandersNummers.size(); i++) {
             System.out.println(tegenstandersNummers.get(i));
         }
@@ -77,12 +73,7 @@ public class Level {
         System.out.println("Scherpschutters: " + aantalScherpschutters);
         System.out.println("Speedy: " + aantalSpeedy);
         System.out.println("Total Enemies: " + tegenstandersNummers.size());
-
-        //if () {
-        //boolean boss = SetBoss();
-        //Spelscherm.MaakBossAan(boss,speler,scoreText);
-        //}
-
+        System.out.println(Tegenstander.aantalTegenstanders + "test");
         return tegenstanders;
     }
 
@@ -96,16 +87,6 @@ public class Level {
     public static void shuffleArrayList(ArrayList<?> list) {
         Collections.shuffle(list);
     }
-
-
-
-
-
-//    private static void vulArray(int aantalSoortVogel,int soortNummer){
-//        for (int i = 0; i < aantalSoortVogel;i++){
-//            tegenstandersNummer.add(soortNummer);
-//        }
-//    }
 }
 
 

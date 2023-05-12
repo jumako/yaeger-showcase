@@ -135,7 +135,7 @@ public class Speler extends DynamicSpriteEntity implements KeyListener,SceneBord
 	static void upgradeSpeler(int upgradeLevel) {
 
 		if (upgradeLevel == 1) {
-			spelerSnelheid = spelerSnelheid * 10;
+			spelerSnelheid = spelerSnelheid * 4;
 		}
 		if (upgradeLevel == 2) {
 			spelerLevens = spelerLevens * 5;

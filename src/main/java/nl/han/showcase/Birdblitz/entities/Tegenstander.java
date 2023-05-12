@@ -30,6 +30,9 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
         aantalTegenstanders++;
     }
 
+    public static void ontvangSchade(int schade) {
+    }
+
     public void notifyBoundaryCrossing(SceneBorder border) {
         switch (border) {
             case TOP:
@@ -44,9 +47,6 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
                 setAnchorLocationX(0);
                 break;
         }
-    }
-
-    protected static void ontvangSchade(int schade) {
     }
 
 
@@ -70,6 +70,8 @@ public abstract class Tegenstander extends DynamicSpriteEntity implements Collid
             levens -= Kogel.schade;
             if (levens <= 0) {
                 remove();
+                aantalTegenstanders--;
+                System.out.println(Tegenstander.aantalTegenstanders + "test");
                 Speler.Kill();
                 speler.setScore(this.getScore() + getScore());
                 scoreText.setScoreText(this.getScore());
